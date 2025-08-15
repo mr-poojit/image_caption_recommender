@@ -19,7 +19,6 @@ from core.config import DEFAULT_MODEL
 st.set_page_config(page_title="AI Image Caption Recommender", page_icon="🎨", layout="wide")
 
 # ==== CUSTOM CSS ====
-# ==== CUSTOM CSS ====
 st.markdown("""
 <style>
 /* ===== Background Gradient Animation ===== */
@@ -44,7 +43,8 @@ body {
   margin-top: 15px;
 }
 .preview-container img {
-  max-width: 200px;
+  width: 200px !important; /* Fixed width */
+  height: auto !important; /* Keep aspect ratio */
   border-radius: 15px;
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
@@ -144,8 +144,16 @@ def _cached_captions(img_bytes: bytes, n: int, styles: List[str], platform: str,
 # ==== MAIN LOGIC ====
 if uploaded:
     image = Image.open(uploaded).convert("RGB")
-    st.markdown('<div class="uploaded-image">', unsafe_allow_html=True)
-    st.image(image, caption="Preview", use_column_width=False)
+
+    # Resize to fixed preview size
+    fixed_width = 200
+    ratio = fixed_width / image.width
+    new_height = int(image.height * ratio)
+    preview_img = image.resize((fixed_width, new_height))
+
+    # Centered preview container
+    st.markdown('<div class="preview-container">', unsafe_allow_html=True)
+    st.image(preview_img, caption="Preview", use_container_width=False)
     st.markdown('</div>', unsafe_allow_html=True)
 
     if st.button("✨ Generate captions"):
