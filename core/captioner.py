@@ -2,7 +2,7 @@ from __future__ import annotations
 import json
 from typing import Any, List, Dict
 from PIL import Image
-from pydantic import BaseModel, Field
+from pydantic import RootModel, BaseModel, Field
 from google.genai import types
 from .config import client, DEFAULT_MODEL, DEFAULT_SAFETY
 from .prompts import build_caption_prompt
@@ -15,8 +15,8 @@ class CaptionOption(BaseModel):
     hashtags: List[str] = Field(default_factory=list)
     score: float | None = None  # self-score for relevance/engagement
 
-class CaptionList(BaseModel):
-    __root__: List[CaptionOption]
+class CaptionList(RootModel[List[CaptionOption]]):
+    pass
 
 def _schema_array_of_caption_options() -> types.Schema:
     # See "Structured output" in Gemini docs
