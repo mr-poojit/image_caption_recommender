@@ -95,7 +95,7 @@ body {
 
 # ==== HEADER ====
 st.markdown("## ✨ AI Image Caption Recommender")
-st.caption("Upload an image → Get creative captions, alt text, and hashtags with a **stylish purple UI**.")
+st.caption("Upload an image → Get creative captions, alt text, and hashtags! → Share your creativity.")
 
 # ==== SIDEBAR ====
 with st.sidebar:
