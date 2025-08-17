@@ -15,16 +15,6 @@ Built using **Streamlit** and deployed live at:
 
 ---
 
-## 🖼️ Screenshots
-
-### Upload & Preview
-![Upload Screenshot](assets/upload.png)
-
-### Caption Suggestions
-![Captions Screenshot](assets/captions.png)
-
----
-
 ## 🛠️ Tech Stack
 - **Framework:** [Streamlit](https://streamlit.io/)  
 - **Image Processing:** [Pillow (PIL)](https://python-pillow.org/)  
@@ -106,3 +96,4 @@ This project is licensed under the **MIT License**.
 ## 👨‍💻 Author
 
 Made with ❤️ by **Poojit Jagadeesh Nagaloti**
+
